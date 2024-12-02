@@ -1,0 +1,21 @@
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import { Provider } from "react-redux";
+import { configureStore } from "@reduxjs/toolkit";
+import tasksReducer from "./features/tasks/tasksSlice";
+import App from "./App";
+
+const store = configureStore({
+  reducer: {
+    tasks: tasksReducer,
+  },
+});
+
+createRoot(document.getElementById("root")).render(
+  <Provider store={store}>
+    <StrictMode>
+      <App />
+    </StrictMode>
+  </Provider>
+);
